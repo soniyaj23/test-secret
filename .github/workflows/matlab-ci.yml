@@ -41,4 +41,4 @@ jobs:
         env:
           MY_API_KEY: ${{ secrets.API_KEY }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        run: matlab -batch "mySecureScript"
+        run: matlab -batch "secrettest"
