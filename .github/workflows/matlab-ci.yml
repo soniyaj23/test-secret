@@ -28,6 +28,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Allow PowerShell Script Execution
+        run: |
+          powershell.exe -Command "Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass"
+
+
       # # Sets up MATLAB on a GitHub-hosted runner
       # - name: Set up MATLAB
       #   uses: matlab-actions/setup-matlab@v2
