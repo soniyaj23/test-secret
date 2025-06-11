@@ -1,7 +1,18 @@
+trigger:
+- main  # or your default branch
+
 pool:
   vmImage: ubuntu-latest
+
+variables:
+- group: matlab-secrets  # Add this line to import the variable group
+
 steps:
   - task: InstallMATLAB@1
-  - task: RunMATLABCommand@1
-    inputs:
-      command: disp('Running my custom testing procedure!'); secrettest;
+
+  - script: |
+      echo "Running my custom testing procedure!"
+      matlab -batch "secrettest"
+    displayName: "Run secrettest MATLAB script"
+    env:
+      MATLAB_APP_KEY: $(API_KEY)  # Set env var for MATLAB
