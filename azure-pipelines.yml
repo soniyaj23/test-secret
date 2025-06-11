@@ -1,0 +1,7 @@
+pool:
+  vmImage: ubuntu-latest
+steps:
+  - task: InstallMATLAB@1
+  - task: RunMATLABCommand@1
+    inputs:
+      command: disp('Running my custom testing procedure!'); secrettest;
