@@ -2,7 +2,8 @@ trigger:
 - main  # or your default branch
 
 pool:
-  vmImage: ubuntu-latest
+  name: Default  # Self-hosted agent pool
+  # vmImage: ubuntu-latest
 
 variables:
 - group: matlab-secrets  # Add this line to import the variable group
