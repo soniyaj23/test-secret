@@ -28,7 +28,7 @@ jobs:
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v3
         with:
-          release: R2026b
+          release: R2026a
 
       # You can use "run-command" to execute custom MATLAB scripts, functions, or statements
       - name: Run custom script to test secrets
