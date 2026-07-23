@@ -9,7 +9,7 @@ fprintf('First 5 characters of secret: %s...\n', secretValue(1:min(5, end))); % 
 % Try to access list of Secrets
 sprintf("Listing all secrets")
 try
-  [names, metadata] = matlab.authnz.internal.builtins.public.listsecrets
+  [names, metadata] = matlab.authnz.internal.core.listsecrets
 catch ME
   disp(ME);
 end
