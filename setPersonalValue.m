@@ -18,7 +18,7 @@ function setPersonalValue
   disp(pi);
   fprintf('\n');
 
-  if(numel(dir(prefdir) > numFiles)) {
+  if(numel(dir(prefdir)) > numFiles) {
     disp('Files in prefdir: ');
     disp(dir(prefdir));
   }
