@@ -1,6 +1,10 @@
 % personalValue.m
 function personalValue
 
+  % Display settings of NumericFormat
+  disp('Settings of NumericFormat:');
+  disp(s.matlab.commandwindow.NumericFormat);
+  
   % Checking if MATLAB settings persist
   fprintf('\nValue of pi = ');
   disp(pi);
