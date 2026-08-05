@@ -36,6 +36,6 @@ jobs:
       - name: Run custom script to test secrets
         uses: matlab-actions/run-command@v3
         with:
-          command: disp('Running my custom testing procedure!\n'); disp('short pi = '); disp(pi); settings().matlab.commandwindow.NumericFormat.PersonalValue = 'long'; disp('\nlong pi = ); disp(pi);secrettest;
+          command: disp('Running my custom testing procedure!\n'); secrettest;
         env:
           MATLAB_APP_KEY: ${{ secrets.API_KEY }}
