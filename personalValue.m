@@ -3,6 +3,7 @@ function personalValue
 
   % Display settings of NumericFormat
   disp('Settings of NumericFormat:');
+  s = settings();
   disp(s.matlab.commandwindow.NumericFormat);
   
   % Checking if MATLAB settings persist
