@@ -36,7 +36,7 @@ jobs:
       - name: Run custom script to test secrets
         uses: matlab-actions/run-command@v3
         with:
-          command: disp('Setting PersonalValue of MATLAB settings!\n'); setPersonalValue;
+          command: disp('Setting PersonalValue of MATLAB settings!/n'); setPersonalValue;
           
         env:
           MATLAB_APP_KEY: ${{ secrets.API_KEY }}
@@ -44,4 +44,4 @@ jobs:
       - name: Run script
         uses: matlab-actions/run-command@v3
         with:
-          command: disp('Checking if PersonalValue of MATLAB settings persist in CICD!\n'); personalValue;
+          command: disp('Checking if PersonalValue of MATLAB settings persist in CICD!/n'); personalValue;
