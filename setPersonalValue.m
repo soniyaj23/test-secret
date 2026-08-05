@@ -6,7 +6,8 @@ function setPersonalValue
   disp('Path of prefdir: ');
   disp(prefdir);
   disp('Number of files in a prefdir: ');
-  numFiles = numel(dir(prefdir));
+  numFiles = numel(ls(prefdir));
+  disp(numFiles);
   disp('Files in prefdir: ');
   disp(ls(prefdir));
   
@@ -18,7 +19,7 @@ function setPersonalValue
   disp(pi);
   fprintf('\n');
 
-  if numel(dir(prefdir)) > numFiles
+  if numel(ls(prefdir)) > numFiles
     disp('Files in prefdir: ');
     disp(ls(prefdir));
   end
