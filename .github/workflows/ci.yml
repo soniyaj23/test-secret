@@ -36,7 +36,7 @@ jobs:
       - name: Run personalValue script
         uses: matlab-actions/run-command@v3
         with:
-          command: disp('Checking if InstallationValue of MATLAB settings persist in CICD!'); s = settings(); s.matlab.commandwindow.NumericFormat.InstallationValue = 'long'; personalValue;
+          command: disp('Checking if PersonalValue of MATLAB settings persist in CICD!'); s = settings(); s.matlab.commandwindow.NumericFormat.PersonalValue = 'long'; personalValue;
 
       - name: Run script
         uses: matlab-actions/run-command@v3
