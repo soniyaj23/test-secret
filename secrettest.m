@@ -3,7 +3,7 @@ function secrettest
 sprintf("Listing all env variables")
 system('env')
 secretValue = getenv("MY_API_KEY");
-% GitHub actions actively prevents logging secret values 
+% GitHub Actions actively prevents logging secret values 
 fprintf('Secret value has length: %d\n', length(secretValue));
 fprintf('First 5 characters of secret: %s...\n', secretValue(1:min(5, end))); % Example: print first 5 chars
 
@@ -17,7 +17,7 @@ fprintf('MATLAB_UNATTENDED_TEST_ENVIRONMENT = %d\n', getenv('MATLAB_UNATTENDED_T
 fprintf('\nshort value of pi = );
 disp(pi);
 s = settings();
-s.matlab.commandwindow.NumericFormat.PersonalValue = 'long';
+% s.matlab.commandwindow.NumericFormat.PersonalValue = 'long';
 fprintf('\nlong value of pi = );
 disp(pi);
 fprintf('\n');
