@@ -33,15 +33,7 @@ jobs:
         uses: matlab-actions/setup-matlab@v3
 
       # You can use "run-command" to execute custom MATLAB scripts, functions, or statements
-      - name: Run custom script to test secrets
-        uses: matlab-actions/run-command@v3
-        with:
-          command: disp('Setting PersonalValue of MATLAB settings!/n'); setPersonalValue;
-          
-        env:
-          MATLAB_APP_KEY: ${{ secrets.API_KEY }}
-
       - name: Run script
         uses: matlab-actions/run-command@v3
         with:
-          command: disp('Checking if PersonalValue of MATLAB settings persist in CICD!/n'); personalValue;
+          command: disp('Checking if TemporaryValue of MATLAB settings persist in CICD!'); settings().matlab.commandwindow.NumericFormat.TemporaryValue = 'long'; personalValue;
