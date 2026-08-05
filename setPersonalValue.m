@@ -13,7 +13,7 @@ function setPersonalValue
   
   % Set PersonalValue
   s = settings();
-  s.matlab.commandwindow.NumericFormat.PersonalValue = 'long';
+  s.matlab.commandwindow.NumericFormat.TemporaryValue = 'long';
   
   fprintf('\nlong value of pi = ');
   disp(pi);
