@@ -8,7 +8,7 @@ function setPersonalValue
   disp('Number of files in a prefdir: ');
   numFiles = numel(dir(prefdir));
   disp('Files in prefdir: ');
-  disp(dir(prefdir));
+  disp(ls(prefdir));
   
   % Set PersonalValue
   s = settings();
@@ -20,6 +20,6 @@ function setPersonalValue
 
   if numel(dir(prefdir)) > numFiles
     disp('Files in prefdir: ');
-    disp(dir(prefdir));
+    disp(ls(prefdir));
   end
 end
