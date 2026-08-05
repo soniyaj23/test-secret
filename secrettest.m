@@ -17,13 +17,13 @@ fprintf('MATLAB_UNATTENDED_TEST_ENVIRONMENT = %d\n', getenv('MATLAB_UNATTENDED_T
 fprintf('\nshort value of pi = ');
 disp(pi);
 s = settings();
-s.matlab.commandwindow.NumericFormat.TemporaryValue = 'long';
+s.matlab.commandwindow.NumericFormat.PersonalValue = 'long';
 fprintf('\nlong value of pi = ');
 disp(pi);
 fprintf('\n');
 
 % Try to access list of Secrets
-fprintf("Listing all secrets")
+fprintf("Listing all secrets\n")
 try
   [names, metadata] = matlab.authnz.internal.builtins.public.listsecrets
 catch ME
