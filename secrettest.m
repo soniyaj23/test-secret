@@ -1,11 +1,11 @@
 % secrettest.m
 function secrettest
-sprintf("Listing all env variables")
+fprintf("Listing all env variables")
 system('env')
 secretValue = getenv("MY_API_KEY");
 % GitHub Actions actively prevents logging secret values 
 fprintf('Secret value has length: %d\n', length(secretValue));
-fprintf('First 5 characters of secret: %s...\n', secretValue(1:min(5, end))); % Example: print first 5 chars
+fprintf('First 5 characters of secret: %s...\n', secretValue(1:min(5, length(secretValue)))); % Example: print first 5 chars
 
 % Checking prefdir in CICD
 fprintf('prefdir = %s\n\n', prefdir);
@@ -17,13 +17,13 @@ fprintf('MATLAB_UNATTENDED_TEST_ENVIRONMENT = %d\n', getenv('MATLAB_UNATTENDED_T
 fprintf('\nshort value of pi = ');
 disp(pi);
 s = settings();
-s.matlab.commandwindow.NumericFormat.PersonalValue = 'long';
+s.matlab.commandwindow.NumericFormat.TemporaryValue = 'long';
 fprintf('\nlong value of pi = ');
 disp(pi);
 fprintf('\n');
 
 % Try to access list of Secrets
-sprintf("Listing all secrets")
+fprintf("Listing all secrets")
 try
   [names, metadata] = matlab.authnz.internal.builtins.public.listsecrets
 catch ME
