@@ -14,12 +14,12 @@ fprintf('prefdir = %s\n\n', prefdir);
 fprintf('MATLAB_UNATTENDED_TEST_ENVIRONMENT = %d\n', getenv('MATLAB_UNATTENDED_TEST_ENVIRONMENT'));
 
 % Checking if MATLAB settings persist
-fprintf('\nshort value of pi = ');
+fprintf('\nValue of pi = ');
 disp(pi);
-s = settings();
-s.matlab.commandwindow.NumericFormat.PersonalValue = 'long';
-fprintf('\nlong value of pi = ');
-disp(pi);
+% s = settings();
+% s.matlab.commandwindow.NumericFormat.PersonalValue = 'long';
+% fprintf('\nlong value of pi = ');
+% disp(pi);
 fprintf('\n');
 
 % Try to access list of Secrets
