@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Run personalValue script (with setting)
         uses: matlab-actions/run-command@v3
