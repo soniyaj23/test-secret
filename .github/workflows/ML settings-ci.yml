@@ -22,6 +22,7 @@ jobs:
     # To start MSH in batch
     env:
       MW_START_MSH_IN_BATCH: 1
+      MATLAB_PREFDIR: /tmp/ci_prefdir
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
