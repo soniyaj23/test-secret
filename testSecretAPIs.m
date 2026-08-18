@@ -6,7 +6,7 @@ function testSecretAPIs
   disp(listSecrets);
   
   disp('Files in credentials directory: ');
-  credsLoc = fullfile(prefdir,'..','..','credentials'));
+  credsLoc = fullfile(prefdir,'..','..','credentials');
   disp(ls(credsLoc));
 
 end
