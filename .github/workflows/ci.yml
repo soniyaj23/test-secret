@@ -13,16 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Run personalValue script (with setting)
+      - name: 1st Run of testSecretAPIs script
         uses: matlab-actions/run-command@v3
         with:
-          command: |
-            disp('Checking if PersonalValue of MATLAB settings persist in CICD!');
-            s = settings();
-            s.matlab.commandwindow.NumericFormat.PersonalValue = 'long';
-            personalValue;
+          command: testSecretAPIs;
 
-      - name: Run script
+      - name: 2nd Run of testSecretAPIs script
         uses: matlab-actions/run-command@v3
         with:
-          command: personalValue
+          command: testSecretAPIs;
