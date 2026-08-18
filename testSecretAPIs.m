@@ -7,10 +7,10 @@ function testSecretAPIs
   
   disp('Files in credentials directory: ');
   credsLoc = fullfile(prefdir,'..','..','credentials');
-  disp(ls(credsLoc));
   cd(credsLoc);
+  disp(ls);
 
-  doc = xmlread(default_store.xml);
+  doc = xmlread("default_store.xml");
 
   items = doc.getElementsByTagName('MetadataItem');
   
