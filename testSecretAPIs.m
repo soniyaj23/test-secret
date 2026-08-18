@@ -1,7 +1,7 @@
 % testSecretAPIs.m
 function testSecretAPIs
 
-  importSecrets("creds.env", Overwrite=1);
+  importSecrets("creds.env");
   disp('List of Secrets:');
   disp(listSecrets);
   
