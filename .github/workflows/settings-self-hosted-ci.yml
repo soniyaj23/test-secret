@@ -1,0 +1,24 @@
+name: MATLAB Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: 1st Run of testSecretAPIs script
+        uses: matlab-actions/run-command@v3
+        with:
+          command: disp('Checking if PersonalValue of MATLAB settings persist in CICD!'); s = settings(); s.matlab.commandwindow.NumericFormat.PersonalValue = 'long'; personalValue;
+
+      - name: 2nd Run of testSecretAPIs script
+        uses: matlab-actions/run-command@v3
+        with:
+          command: personalValue;
