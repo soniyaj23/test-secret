@@ -1,0 +1,89 @@
+name: Secret Masking Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  masking-demo:
+    runs-on: ubuntu-latest
+    steps:
+
+      # ---------------------------------------------------------
+      # CASE 1: Direct print of a registered GitHub secret
+      # Expected: MASKED automatically, shows as ***
+      # ---------------------------------------------------------
+      - name: "1. Direct secret print (should be masked)"
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+        run: |
+          echo "Direct print: $MY_SECRET"
+
+      # ---------------------------------------------------------
+      # CASE 2: Base64-encoded secret
+      # Expected: NOT masked — encoding breaks the string match
+      # ---------------------------------------------------------
+      - name: "2. Base64-encoded secret (masking likely bypassed)"
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+        run: |
+          ENCODED=$(echo -n "$MY_SECRET" | base64)
+          echo "Base64 encoded: $ENCODED"
+
+      # ---------------------------------------------------------
+      # CASE 3: Secret split into two halves and concatenated
+      # Expected: NOT masked — the substring doesn't match the full value
+      # ---------------------------------------------------------
+      - name: "3. Split secret (masking bypassed)"
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+        run: |
+          HALF1="${MY_SECRET:0:$((${#MY_SECRET}/2))}"
+          HALF2="${MY_SECRET:$((${#MY_SECRET}/2))}"
+          echo "First half: $HALF1"
+          echo "Second half: $HALF2"
+
+      # ---------------------------------------------------------
+      # CASE 4: Secret embedded inside JSON
+      # Expected: NOT masked if any surrounding formatting changes it
+      # (in practice simple embedding often still matches — worth testing)
+      # ---------------------------------------------------------
+      - name: "4. Secret inside JSON (test masking)"
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+        run: |
+          echo "{\"token\": \"$MY_SECRET\"}"
+
+      # ---------------------------------------------------------
+      # CASE 5: Explicit add-mask on a DERIVED value
+      # Expected: MASKED, because we register it before printing
+      # ---------------------------------------------------------
+      - name: "5. Manually masked derived value (correctly masked)"
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+        run: |
+          DERIVED="prefix-${MY_SECRET}-suffix"
+          echo "::add-mask::$DERIVED"
+          echo "Derived (masked because we registered it first): $DERIVED"
+
+      # ---------------------------------------------------------
+      # CASE 6: The "too late" mistake — printing BEFORE masking
+      # Expected: NOT masked — order matters
+      # ---------------------------------------------------------
+      - name: "6. Masked too late (masking bypassed)"
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+        run: |
+          DERIVED="oops-${MY_SECRET}-oops"
+          echo "Derived (leaked, printed BEFORE add-mask): $DERIVED"
+          echo "::add-mask::$DERIVED"
+
+      # ---------------------------------------------------------
+      # CASE 7: Reversed string
+      # Expected: NOT masked — even trivial transforms break matching
+      # ---------------------------------------------------------
+      - name: "7. Reversed secret (masking bypassed)"
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+        run: |
+          REVERSED=$(echo "$MY_SECRET" | rev)
+          echo "Reversed: $REVERSED"
