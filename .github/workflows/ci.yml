@@ -30,10 +30,9 @@ jobs:
 
       # You can use "run-command" to execute custom MATLAB scripts, functions, or statements
       # ci.yml
-      - name: Run downloadArtifacts
+      - name: Run generateReport script
         uses: matlab-actions/run-command@v3
         env:
-          ARTIFACT_USER: ${{ secrets.ARTIFACT_USER }}
-          ARTIFACT_PASSWORD: ${{ secrets.ARTIFACT_PASSWORD }}
+          salesDbKey: ${{ secrets.salesDbKey }}
         with:
-          command: matlab -batch "downloadArtifacts";
+          command: generateReport;
