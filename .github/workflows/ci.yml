@@ -36,4 +36,4 @@ jobs:
           ARTIFACT_USER: ${{ secrets.ARTIFACT_USER }}
           ARTIFACT_PASSWORD: ${{ secrets.ARTIFACT_PASSWORD }}
         with:
-          command: downloadArtifacts;
+          command: matlab -batch "downloadArtifacts";
