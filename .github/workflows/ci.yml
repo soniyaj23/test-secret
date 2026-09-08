@@ -5,10 +5,10 @@ name: MATLAB Build
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  # push:
+  #   branches: [ main ]
+  # pull_request:
+  #   branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -29,7 +29,11 @@ jobs:
         uses: matlab-actions/setup-matlab@v3
 
       # You can use "run-command" to execute custom MATLAB scripts, functions, or statements
-      - name: Run generateDatabaseReport
+      # ci.yml
+      - name: Run downloadArtifacts
         uses: matlab-actions/run-command@v3
+        env:
+          ARTIFACT_USER: ${{ secrets.ARTIFACT_USER }}
+          ARTIFACT_PASSWORD: ${{ secrets.ARTIFACT_PASSWORD }}
         with:
-          command: generateDatabaseReport;
+          command: downloadArtifacts;
