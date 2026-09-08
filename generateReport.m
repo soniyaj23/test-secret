@@ -1,5 +1,7 @@
 % generateReport.m script
 
+matlab.internal.feature("DuckDBEncryptionSupport", 1);
+
 conn = duckdb("sales_data.db", EncryptionKeyID=secretID("salesDbKey"));
 
 results = fetch(conn,"SELECT * FROM transactions");
