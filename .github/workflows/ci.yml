@@ -27,9 +27,6 @@ jobs:
       # Sets up MATLAB on a GitHub-hosted runner
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v3
-        with:
-          release: R2026a
-          products: Database_Toolbox
 
       # You can use "run-command" to execute custom MATLAB scripts, functions, or statements
       # ci.yml
