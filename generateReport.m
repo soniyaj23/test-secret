@@ -2,7 +2,7 @@
 
 matlab.internal.feature("DuckDBEncryptionSupport", 1);
 
-conn = duckdb("sales_data.db", EncryptionKeyID=secretID("salesDbKey"));
+conn = duckdb("sales_data.db", EncryptionKeyID=getSecret("salesDbKey"));
 
 results = fetch(conn,"SELECT * FROM transactions");
 
