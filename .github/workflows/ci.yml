@@ -30,10 +30,10 @@ jobs:
 
       # You can use "run-command" to execute custom MATLAB scripts, functions, or statements
       # ci.yml
-      - name: Using importSecrets
-        uses: matlab-actions/run-command@v3
-        with:
-          command: importSecrets('creds.env'); generateReport;
+      # - name: Using importSecrets
+      #   uses: matlab-actions/run-command@v3
+      #   with:
+      #     command: importSecrets('creds.env'); generateReport;
 
       # ci.yml
       # - name: Run generateReport script
@@ -42,3 +42,11 @@ jobs:
       #     salesDbKey: ${{ secrets.salesDbKey }}
       #   with:
       #     command: generateReport;
+
+      # ci.yml
+      - name: Print secrets
+        uses: matlab-actions/run-command@v3
+        env:
+           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        with:
+          command: disp(${{ secrets.DB_PASSWORD }})
