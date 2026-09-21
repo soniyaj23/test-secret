@@ -49,4 +49,4 @@ jobs:
         env:
            DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         with:
-          command: disp(getenv('DB_PASSWORD')
+          command: disp(getenv('DB_PASSWORD'))
