@@ -19,4 +19,4 @@ jobs:
       - name: Run Build Tool
         uses: matlab-actions/run-build@v3
         with:
-          tasks: checkEnvs
+          tasks: checkEnv
