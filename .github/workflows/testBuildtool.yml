@@ -1,0 +1,22 @@
+name: Test environment propagation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      MY_TEST_VAR: hello-from-ci
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v2
+
+      - name: Run Build Tool
+        uses: matlab-actions/run-build@v3
+        with:
+          tasks: checkEnvs
